@@ -191,13 +191,15 @@ public class MyArrayList<T> implements List<T> {
 			throw new IndexOutOfBoundsException();
 		}
 
+		T temp = array[index];
 		array[index] = null;
 
-		for(int i = index; i < size; i++) {
-			array[index - 1] = array[index];
+		for(int i = index; i < size-1; i++) {
+			array[i] = array[i+1];
 		}
+		size--;
 
-		return null;
+		return temp;
 	}
 
 	@Override
@@ -219,8 +221,9 @@ public class MyArrayList<T> implements List<T> {
 		if(size <= index || index < 0) {
 			throw new IndexOutOfBoundsException();
 		}
+		T temp = array[index];
 		array[index] = element;
-		return array[index];
+		return temp;
 	}
 
 	@Override
